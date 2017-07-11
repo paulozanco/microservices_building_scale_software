@@ -1,6 +1,0 @@
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/service/BaseService.java
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/core/repository/Repository.java
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/core/domain/BaseEntity.java
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/service/ReadOnlyBaseService.java
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/core/domain/Entity.java
-/Users/pzanco/JavaProjects/microservices_building_scale_software/uservice-core/src/main/java/co/paulozan/book/uservice/core/repository/ReadOnlyRepository.java
