@@ -14,6 +14,8 @@
     <module>uservice-restaurant</module>
     <module>uservice-eureka</module>
     <module>uservice-samples</module>
+    <module>uservice-dashboard</module>
+    <module>uservice-turbine</module>
   </modules>
 
   <properties>
