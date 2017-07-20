@@ -10,10 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author Sourabh Sharma
- */
+
 @Component
 public class ServiceHelper {
 
@@ -22,21 +19,12 @@ public class ServiceHelper {
     @Autowired
     private LoadBalancerClient loadBalancer;
 
-    /**
-     *
-     * @param serviceId
-     * @return
-     */
+
     public URI getServiceUrl(String serviceId) {
         return getServiceUrl(serviceId, null);
     }
 
-    /**
-     *
-     * @param serviceId
-     * @param fallbackUri
-     * @return
-     */
+
     protected URI getServiceUrl(String serviceId, String fallbackUri) {
         URI uri = null;
         try {

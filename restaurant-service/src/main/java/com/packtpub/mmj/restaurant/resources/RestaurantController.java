@@ -21,28 +21,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author sousharm
- */
+
 @RestController
 @RequestMapping("/v1/restaurants")
 public class RestaurantController {
 
-    /**
-     * Logger
-     */
+
     protected Logger logger = Logger.getLogger(RestaurantController.class.getName());
 
-    /**
-     * restaurant service
-     */
+
     protected RestaurantService restaurantService;
 
-    /**
-     *
-     * @param restaurantService
-     */
+
     @Autowired
     public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
@@ -51,23 +41,13 @@ public class RestaurantController {
     @Autowired
     DiscoveryClient client;
 
-    /**
-     *
-     * @return
-     */
+
     @RequestMapping("/")
     public List<String> home() {
         return client.getServices();
     }
 
-    /**
-     * Fetch restaurants with the specified name. A partial case-insensitive
-     * match is supported. So <code>http://.../restaurants/rest</code> will find
-     * any restaurants with upper or lower case 'rest' in their name.
-     *
-     * @param name
-     * @return A non-null, non-empty collection of restaurants.
-     */
+
     @HystrixCommand(fallbackMethod = "defaultRestaurants")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Collection<Restaurant>> findByName(@RequestParam("name") String name) {
@@ -84,14 +64,7 @@ public class RestaurantController {
                 : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Fetch restaurants with the given id.
-     * <code>http://.../v1/restaurants/{restaurant_id}</code> will return
-     * restaurant with given id.
-     *
-     * @param id
-     * @return A non-null, non-empty collection of restaurants.
-     */
+
     @HystrixCommand(fallbackMethod = "defaultRestaurant")
     @RequestMapping(value = "/{restaurant_id}", method = RequestMethod.GET)
     public ResponseEntity<Entity> findById(@PathVariable("restaurant_id") String id) {
@@ -108,12 +81,7 @@ public class RestaurantController {
                 : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Add restaurant with the specified information.
-     *
-     * @param restaurantVO
-     * @return A non-null restaurant.
-     */
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Restaurant> add(@RequestBody RestaurantVO restaurantVO) {
         logger.info(String.format("restaurant-service add() invoked: %s for %s", restaurantService.getClass().getName(), restaurantVO.getName()));
@@ -129,23 +97,13 @@ public class RestaurantController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    /**
-     * Fallback method
-     *
-     * @param input
-     * @return
-     */
+
     public ResponseEntity<Entity> defaultRestaurant(String input) {
         logger.warning("Fallback method for restaurant-service is being used.");
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Fallback method
-     *
-     * @param input
-     * @return
-     */
+
     public ResponseEntity<Collection<Restaurant>> defaultRestaurants(String input) {
         logger.warning("Fallback method for user-service is being used.");
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);

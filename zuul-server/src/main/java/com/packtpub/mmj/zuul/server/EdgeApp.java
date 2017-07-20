@@ -32,10 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-/**
- *
- * @author Sourabh Sharma
- */
+
 @SpringBootApplication
 @EnableZuulProxy
 @EnableEurekaClient

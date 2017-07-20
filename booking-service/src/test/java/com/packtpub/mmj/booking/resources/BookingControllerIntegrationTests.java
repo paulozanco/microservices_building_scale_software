@@ -26,10 +26,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Spring System test - by using @SpringApplicationConfiguration that picks up
- * same configuration that Spring Boot uses.
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = BookingApp.class)
 @WebIntegrationTest
@@ -42,9 +39,7 @@ public class BookingControllerIntegrationTests {
     @Value("${local.server.port}")
     private int port;
 
-    /**
-     * Test the GET /v1/booking/{id} API
-     */
+
     @Test
     public void testGetById() {
         //API call
@@ -64,9 +59,7 @@ public class BookingControllerIntegrationTests {
         assertEquals(false, isModified);
     }
 
-    /**
-     * Test the GET /v1/booking/{id} API for no content
-     */
+
     @Test
     public void testGetById_NoContent() {
 
@@ -80,9 +73,7 @@ public class BookingControllerIntegrationTests {
         assertEquals(HttpStatus.NO_CONTENT, responseE.getStatusCode());
     }
 
-    /**
-     * Test the GET /v1/booking API
-     */
+
     @Test
     public void testGetByName() {
 
@@ -113,11 +104,7 @@ public class BookingControllerIntegrationTests {
         assertEquals(false, isModified);
     }
 
-    /**
-     * Test the POST /v1/booking API
-     *
-     * @throws JsonProcessingException
-     */
+
     @Test
     public void testAdd() throws JsonProcessingException {
 

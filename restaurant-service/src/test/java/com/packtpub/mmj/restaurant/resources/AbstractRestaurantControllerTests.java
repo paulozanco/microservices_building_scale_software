@@ -11,33 +11,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-/**
- *
- * @author sousharm
- */
+
 public abstract class AbstractRestaurantControllerTests {
 
-    /**
-     * RESTAURANT ID constant having value 1
-     */
+
     protected static final String RESTAURANT = "1";
 
-    /**
-     * RESTAURANT name constant having value Big-O Restaurant
-     */
+
     protected static final String RESTAURANT_NAME = "Le Meurice";
 
-    /**
-     * RESTAURANT address constant
-     */
+
     protected static final String RESTAURANT_ADDRESS = "228 rue de Rivoli, 75001, Paris";
 
     @Autowired
     RestaurantController restaurantController;
 
-    /**
-     * Test method for findById method
-     */
+
     @Test
     public void validResturantById() {
         Logger.getGlobal().info("Start validResturantById test");
@@ -51,9 +40,7 @@ public abstract class AbstractRestaurantControllerTests {
         Logger.getGlobal().info("End validResturantById test");
     }
 
-    /**
-     * Test method for findByName method
-     */
+
     @Test
     public void validResturantByName() {
         Logger.getGlobal().info("Start validResturantByName test");
@@ -70,9 +57,7 @@ public abstract class AbstractRestaurantControllerTests {
         Logger.getGlobal().info("End validResturantByName test");
     }
 
-    /**
-     * Test method for add method
-     */
+
     @Test
     public void validAdd() {
         Logger.getGlobal().info("Start validAdd test");

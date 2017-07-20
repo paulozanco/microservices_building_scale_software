@@ -24,10 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Spring System test - by using @SpringApplicationConfiguration that picks up
- * same configuration that Spring Boot uses.
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = UsersApp.class)
 @WebIntegrationTest
@@ -40,9 +37,7 @@ public class UserControllerIntegrationTests {
     @Value("${local.server.port}")
     private int port;
 
-    /**
-     * Test the GET /v1/user/{id} API
-     */
+
     @Test
     public void testGetById() {
         //API call
@@ -62,9 +57,7 @@ public class UserControllerIntegrationTests {
         assertEquals(false, isModified);
     }
 
-    /**
-     * Test the GET /v1/user/{id} API for no content
-     */
+
     @Test
     public void testGetById_NoContent() {
 
@@ -78,9 +71,7 @@ public class UserControllerIntegrationTests {
         assertEquals(HttpStatus.NO_CONTENT, responseE.getStatusCode());
     }
 
-    /**
-     * Test the GET /v1/user API
-     */
+
     @Test
     public void testGetByName() {
 
@@ -110,11 +101,7 @@ public class UserControllerIntegrationTests {
         assertEquals(false, isModified);
     }
 
-    /**
-     * Test the POST /v1/user API
-     *
-     * @throws JsonProcessingException
-     */
+
     @Test
     public void testAdd() throws JsonProcessingException {
 

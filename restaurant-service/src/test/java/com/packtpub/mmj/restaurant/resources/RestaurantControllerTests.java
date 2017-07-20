@@ -12,28 +12,19 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Before;
 
-/**
- *
- * @author sousharm
- */
+
 public class RestaurantControllerTests extends AbstractRestaurantControllerTests {
 
-    /**
-     * Test Restaurant Instance
-     */
+
     protected static final Restaurant restaurantStaticInstance = new Restaurant(RESTAURANT,
             RESTAURANT_NAME, RESTAURANT_ADDRESS, null);
 
-    /**
-     * Test Repository
-     */
+
     protected static class TestRestaurantRepository implements RestaurantRepository<Restaurant, String> {
 
         private Map<String, Restaurant> entities;
 
-        /**
-         * Constructor
-         */
+
         public TestRestaurantRepository() {
             entities = new HashMap();
             Restaurant restaurant = new Restaurant(RESTAURANT_NAME, RESTAURANT, RESTAURANT_ADDRESS, null);
@@ -42,11 +33,7 @@ public class RestaurantControllerTests extends AbstractRestaurantControllerTests
             entities.put("2", restaurant);
         }
 
-        /**
-         *
-         * @param name
-         * @return
-         */
+
         @Override
         public boolean containsName(String name) {
             try {
@@ -57,19 +44,13 @@ public class RestaurantControllerTests extends AbstractRestaurantControllerTests
             return false;
         }
 
-        /**
-         *
-         * @param entity
-         */
+
         @Override
         public void add(Restaurant entity) {
             entities.put(entity.getId(), entity);
         }
 
-        /**
-         *
-         * @param id
-         */
+
         @Override
         public void remove(String id) {
             if (entities.containsKey(id)) {
@@ -77,10 +58,7 @@ public class RestaurantControllerTests extends AbstractRestaurantControllerTests
             }
         }
 
-        /**
-         *
-         * @param entity
-         */
+
         @Override
         public void update(Restaurant entity) {
             if (entities.containsKey(entity.getId())) {
@@ -88,12 +66,7 @@ public class RestaurantControllerTests extends AbstractRestaurantControllerTests
             }
         }
 
-        /**
-         *
-         * @param name
-         * @return
-         * @throws Exception
-         */
+
         @Override
         public Collection<Restaurant> findByName(String name) throws Exception {
             Collection<Restaurant> restaurants = new ArrayList();
@@ -106,49 +79,32 @@ public class RestaurantControllerTests extends AbstractRestaurantControllerTests
             return restaurants;
         }
 
-        /**
-         *
-         * @param id
-         * @return
-         */
+
         @Override
         public boolean contains(String id) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
-        /**
-         *
-         * @param id
-         * @return
-         */
+
         @Override
         public Entity get(String id) {
             return entities.get(id);
         }
 
-        /**
-         *
-         * @return
-         */
+
         @Override
         public Collection<Restaurant> getAll() {
             return entities.values();
         }
     }
 
-    /**
-     * Initialized Restaurant Repository
-     */
+
     protected TestRestaurantRepository testRestaurantRepository = new TestRestaurantRepository();
 
-    /**
-     * Initialized Restaurant Service
-     */
+
     protected RestaurantService restaurantService = new RestaurantServiceImpl(testRestaurantRepository);
 
-    /**
-     * Setup method
-     */
+
     @Before
     public void setup() {
         restaurantController = new RestaurantController(restaurantService);

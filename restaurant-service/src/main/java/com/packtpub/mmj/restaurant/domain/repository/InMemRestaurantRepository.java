@@ -8,18 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Sourabh Sharma
- */
+
 @Repository("restaurantRepository")
 public class InMemRestaurantRepository implements RestaurantRepository<Restaurant, String> {
 
     private Map<String, Restaurant> entities;
 
-    /**
-     * Initialize the in-memory Restaurant Repository with empty Map
-     */
+
     public InMemRestaurantRepository() {
         entities = new HashMap();
         Restaurant restaurant = new Restaurant("Le Meurice", "1", "228 rue de Rivoli, 75001, Paris", null);
@@ -44,12 +39,7 @@ public class InMemRestaurantRepository implements RestaurantRepository<Restauran
         entities.put("10", restaurant);
     }
 
-    /**
-     * Check if given restaurant name already exist.
-     *
-     * @param name
-     * @return true if already exist, else false
-     */
+
     @Override
     public boolean containsName(String name) {
         try {
@@ -60,19 +50,13 @@ public class InMemRestaurantRepository implements RestaurantRepository<Restauran
         return false;
     }
 
-    /**
-     *
-     * @param entity
-     */
+
     @Override
     public void add(Restaurant entity) {
         entities.put(entity.getId(), entity);
     }
 
-    /**
-     *
-     * @param id
-     */
+
     @Override
     public void remove(String id) {
         if (entities.containsKey(id)) {
@@ -80,10 +64,7 @@ public class InMemRestaurantRepository implements RestaurantRepository<Restauran
         }
     }
 
-    /**
-     *
-     * @param entity
-     */
+
     @Override
     public void update(Restaurant entity) {
         if (entities.containsKey(entity.getId())) {
@@ -91,41 +72,25 @@ public class InMemRestaurantRepository implements RestaurantRepository<Restauran
         }
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
+
     @Override
     public boolean contains(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
+
     @Override
     public Entity get(String id) {
         return entities.get(id);
     }
 
-    /**
-     *
-     * @return
-     */
+
     @Override
     public Collection<Restaurant> getAll() {
         return entities.values();
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     * @throws Exception
-     */
+
     @Override
     public Collection<Restaurant> findByName(String name) throws Exception {
         Collection<Restaurant> restaurants = new ArrayList();

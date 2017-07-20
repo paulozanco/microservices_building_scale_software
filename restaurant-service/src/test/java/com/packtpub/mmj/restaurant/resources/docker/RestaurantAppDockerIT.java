@@ -7,17 +7,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-/**
- *
- * @author Sourabh Sharma
- */
+
 @Category(DockerIntegrationTest.class)
 public class RestaurantAppDockerIT {
 
-    /**
-     *
-     * @throws IOException
-     */
+
     @Test
     public void testConnection() throws IOException {
         String baseUrl = System.getProperty("service.url");

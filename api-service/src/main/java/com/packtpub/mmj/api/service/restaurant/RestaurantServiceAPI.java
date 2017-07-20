@@ -55,14 +55,7 @@ public class RestaurantServiceAPI {
         return serviceHelper.createOkResponse(result.getBody());
     }
 
-    /**
-     * Fetch restaurants with the specified name. A partial case-insensitive
-     * match is supported. So <code>http://.../restaurants/rest</code> will find
-     * any restaurants with upper or lower case 'rest' in their name.
-     *
-     * @param name
-     * @return A non-null, non-empty collection of restaurants.
-     */
+
     @HystrixCommand(fallbackMethod = "defaultRestaurants")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Collection<Restaurant>> findByName(@RequestParam("name") String name) {
@@ -78,23 +71,13 @@ public class RestaurantServiceAPI {
         return serviceHelper.createOkResponse(result.getBody());
     }
 
-    /**
-     * Fallback method for getProductComposite()
-     *
-     * @param productId
-     * @return
-     */
+
     public ResponseEntity<Restaurant> defaultRestaurant(
             @PathVariable int restaurantId) {
         return serviceHelper.createResponse(null, HttpStatus.BAD_GATEWAY);
     }
 
-    /**
-     * Fallback method
-     *
-     * @param input
-     * @return
-     */
+
     public ResponseEntity<Collection<Restaurant>> defaultRestaurants(String input) {
         LOG.warn("Fallback method for user-service is being used.");
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -109,18 +92,12 @@ class Restaurant {
     private String name;
     private String address;
 
-    /**
-     *
-     * @return
-     */
+
     public String getAddress() {
         return address;
     }
 
-    /**
-     *
-     * @param address
-     */
+
     public void setAddress(String address) {
         this.address = address;
     }

@@ -29,10 +29,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Spring System test - by using @SpringApplicationConfiguration that picks up
- * same configuration that Spring Boot uses.
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = RestaurantApp.class)
 @WebIntegrationTest("server.port=0")
@@ -46,9 +43,7 @@ public class RestaurantControllerIntegrationTests extends
     @Value("${local.server.port}")
     int port;
 
-    /**
-     * Test the GET /v1/restaurants/{id} API
-     */
+
     @Test
     public void testGetById() {
         //API call
@@ -70,9 +65,7 @@ public class RestaurantControllerIntegrationTests extends
         assertNull(tableList);
     }
 
-    /**
-     * Test the GET /v1/restaurants/{id} API for no content
-     */
+
     @Test
     public void testGetById_NoContent() {
 
@@ -86,9 +79,7 @@ public class RestaurantControllerIntegrationTests extends
         assertEquals(HttpStatus.NO_CONTENT, responseE.getStatusCode());
     }
 
-    /**
-     * Test the GET /v1/restaurants API
-     */
+
     @Test
     public void testGetByName() {
 
@@ -121,11 +112,7 @@ public class RestaurantControllerIntegrationTests extends
         assertNull(tableList);
     }
 
-    /**
-     * Test the POST /v1/restaurants API
-     *
-     * @throws JsonProcessingException
-     */
+
     @Test
     public void testAdd() throws JsonProcessingException {
 

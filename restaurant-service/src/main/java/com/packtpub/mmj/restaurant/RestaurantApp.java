@@ -11,10 +11,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
-/**
- *
- * @author sousharm
- */
+
 @SpringBootApplication
 @EnableEurekaClient
 @EnableCircuitBreaker
@@ -32,10 +29,7 @@ public class RestaurantApp {
         return connectionFactory;
     }
 
-    /**
-     *
-     * @param args
-     */
+
     public static void main(String[] args) {
         SpringApplication.run(RestaurantApp.class, args);
     }

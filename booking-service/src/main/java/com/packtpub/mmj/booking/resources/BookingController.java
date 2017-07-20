@@ -18,41 +18,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Sourabh Sharma
- */
+
 @RestController
 @RequestMapping("/v1/booking")
 public class BookingController {
 
-    /**
-     *
-     */
+
     protected static final Logger logger = Logger.getLogger(BookingController.class.getName());
 
-    /**
-     *
-     */
+
     protected BookingService bookingService;
 
-    /**
-     *
-     * @param bookingService
-     */
+
     @Autowired
     public BookingController(BookingService bookingService) {
         this.bookingService = bookingService;
     }
 
-    /**
-     * Fetch bookings with the specified name. A partial case-insensitive match
-     * is supported. So <code>http://.../booking/rest</code> will find any
-     * bookings with upper or lower case 'rest' in their name.
-     *
-     * @param name
-     * @return A non-null, non-empty collection of bookings.
-     */
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Collection<Booking>> findByName(@RequestParam("name") String name) {
         logger.info(String.format("booking-service findByName() invoked:{} for {} ", bookingService.getClass().getName(), name));
@@ -68,14 +51,7 @@ public class BookingController {
                 : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Fetch bookings with the given id.
-     * <code>http://.../v1/bookings/{id}</code> will return booking with given
-     * id.
-     *
-     * @param id
-     * @return A non-null, non-empty collection of bookings.
-     */
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Entity> findById(@PathVariable("id") String id) {
         logger.info(String.format("booking-service findById() invoked:{} for {} ", bookingService.getClass().getName(), id));
@@ -91,12 +67,7 @@ public class BookingController {
                 : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     * Add booking with the specified information.
-     *
-     * @param bookingVO
-     * @return A non-null booking.
-     */
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Booking> add(@RequestBody BookingVO bookingVO) {
         logger.info(String.format("booking-service add() invoked: %s for %s", bookingService.getClass().getName(), bookingVO.getName()));
